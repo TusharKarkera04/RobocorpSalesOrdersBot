@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.7.5 on win32)" generated="20211221 11:25:56.257" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="c:\Users\tushar.karkera\Documents\Visual Studio Code\CertificationTest\WebAutomationTest\tasks.robot">
+<test id="s1-t1" name="Order robots from RobotSpareBin Industries Inc">
+<kw name="Open the website">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>https://robotsparebinindustries.com/</arg>
+<arg>maximized=True</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20211221 11:26:04.632" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20211221 11:26:04.684" level="INFO">Created download root directory: C:\Users\tushar.karkera\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20211221 11:26:04.684" level="INFO">Created symlink directory: C:\Users\tushar.karkera\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20211221 11:26:04.688" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20211221 11:26:07.751" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20211221 11:26:07.752" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20211221 11:26:07.752" level="INFO">Opening url 'https://robotsparebinindustries.com/'</msg>
+<status status="PASS" starttime="20211221 11:26:04.631" endtime="20211221 11:26:08.547"/>
+</kw>
+<status status="PASS" starttime="20211221 11:26:04.625" endtime="20211221 11:26:08.554"/>
+</kw>
+<kw name="Log In">
+<kw name="Get Secret" library="RPA.Robocorp.Vault">
+<var>${secret}</var>
+<arg>robotsparebin</arg>
+<doc>Read a secret from the configured source, e.g. Robocorp Vault,
+and return it as a ``Secret`` object.</doc>
+<msg timestamp="20211221 11:26:08.573" level="INFO">Protecting keyword: RPA.Robocorp.Vault.Get Secret</msg>
+<msg timestamp="20211221 11:26:08.589" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20211221 11:26:08.568" endtime="20211221 11:26:08.584"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${secret}[username]</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211221 11:26:08.597" level="INFO">maria</msg>
+<status status="PASS" starttime="20211221 11:26:08.592" endtime="20211221 11:26:08.597"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>username</arg>
+<arg>${secret}[username]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211221 11:26:08.600" level="INFO">Typing text 'maria' into text field 'username'.</msg>
+<status status="PASS" starttime="20211221 11:26:08.600" endtime="20211221 11:26:08.840"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>password</arg>
+<arg>${secret}[password]</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20211221 11:26:08.852" level="INFO">Typing password into text field 'password'.</msg>
+<msg timestamp="20211221 11:26:08.992" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20211221 11:26:09.101" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20211221 11:26:08.847" endtime="20211221 11:26:09.101"/>
+</kw>
+<kw name="Submit Form" library="RPA.Browser.Selenium">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20211221 11:26:09.109" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20211221 11:26:09.101" endtime="20211221 11:26:09.173"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>id=logout</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20211221 11:26:09.173" endtime="20211221 11:26:10.700"/>
+</kw>
+<status status="PASS" starttime="20211221 11:26:08.561" endtime="20211221 11:26:10.710"/>
+</kw>
+<kw name="Collect Search Query From User">
+<var>${strUrl}</var>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>search</arg>
+<arg>label=Enter Orders URL</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20211221 11:26:14.255" endtime="20211221 11:26:17.588"/>
+</kw>
+<kw name="Run dialog" library="RPA.Dialogs">
+<var>${response}</var>
+<tag>dialog</tag>
+<doc>Create a dialog from all the defined elements and block
+until the user has handled it.</doc>
+<msg timestamp="20211221 11:26:18.612" level="INFO">Protecting keyword: RPA.Dialogs.Run dialog</msg>
+<msg timestamp="20211221 11:26:28.769" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20211221 11:26:17.591" endtime="20211221 11:26:28.765"/>
+</kw>
+<msg timestamp="20211221 11:26:28.775" level="INFO">${strUrl} = https://robotsparebinindustries.com/orders.csv</msg>
+<status status="PASS" starttime="20211221 11:26:10.718" endtime="20211221 11:26:28.775"/>
+</kw>
+<kw name="Download Csv File">
+<arg>${strUrl}</arg>
+<kw name="Download" library="RPA.HTTP">
+<arg>${strUrl}</arg>
+<arg>target_file=c:\\Users\\tushar.karkera\\Documents\\Visual Studio Code\\CertificationTest\\WebAutomationTest${/}output${/}Data.csv</arg>
+<doc>An alias for the ``HTTP Get`` keyword.</doc>
+<msg timestamp="20211221 11:27:00.308" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20211221 11:27:00.309" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<msg timestamp="20211221 11:27:00.686" level="INFO">GET Request : url=https://robotsparebinindustries.com/orders.csv 
+ path_url=/orders.csv 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20211221 11:27:00.686" level="INFO">GET Response : url=https://robotsparebinindustries.com/orders.csv 
+ status=200, reason=OK 
+ headers={'Connection': 'keep-alive', 'Content-Length': '199', 'Server': 'GitHub.com', 'Content-Type': 'text/csv; charset=utf-8', 'Last-Modified': 'Fri, 13 Aug 2021 11:27:04 GMT', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31556952', 'ETag': 'W/"61165708-19c"', 'expires': 'Tue, 21 Dec 2021 04:22:54 GMT', 'Cache-Control': 'max-age=600', 'Content-Encoding': 'gzip', 'x-proxy-cache': 'MISS', 'X-GitHub-Request-Id': '2140:3B2B:1C3B55:27E5D2:61C15446', 'Accept-Ranges': 'bytes', 'Date': 'Tue, 21 Dec 2021 05:56:50 GMT', 'Via': '1.1 varnish', 'Age': '0', 'X-Served-By': 'cache-bom4742-BOM', 'X-Cache': 'HIT', 'X-Cache-Hits': '1', 'X-Timer': 'S1640066210.881350,VS0,VE190', 'Vary': 'Accept-Encoding', 'X-Fastly-Request-ID': '91ee90292f1f076ed98c41867681ed1c14b211a2'} 
+ body=Order number,Head,Body,Legs,Address
+1,1,2,3,Address 123
+2,4,1,5,Address 456
+3,6,2,3,Address 789
+4,2,3,2,Address 1
+5,3,5,1,Address 2
+6,1,6,6,Address 3
+7,5,1,5,Address 4
+8,2,3,3,Address 5
+9,3,2,2,Address 6
+10,4,4,2,Address 7
+11,6,6,1,Address 8
+12,1,3,3,Address 9
+13,1,5,4,Address A
+14,3,1,5,Address B
+15,3,2,6,Address C
+16,6,3,6,Address D
+17,5,4,1,Address E
+18,2,5,1,Address F
+19,4,6,2,Address G
+20,1,1,5,Address H 
+ </msg>
+<status status="PASS" starttime="20211221 11:26:44.229" endtime="20211221 11:27:00.701"/>
+</kw>
+<status status="PASS" starttime="20211221 11:26:28.778" endtime="20211221 11:27:00.702"/>
+</kw>
+<status status="PASS" starttime="20211221 11:26:04.614" endtime="20211221 11:27:00.711"/>
+</test>
+<doc>Orders robots from RobotSpareBin Industries Inc.
+Saves the order HTML receipt as a PDF file.
+Saves the screenshot of the ordered robot.
+Embeds the screenshot of the robot to the PDF receipt.
+Creates ZIP archive of the receipts and the images.</doc>
+<status status="PASS" starttime="20211221 11:25:56.274" endtime="20211221 11:27:00.721"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
